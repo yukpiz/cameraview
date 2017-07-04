@@ -243,8 +243,12 @@ class Camera1 extends CameraViewImpl {
                 public void onPictureTaken(byte[] data, Camera camera) {
                     isPictureCaptureInProgress.set(false);
                     mCallback.onPictureTaken(data);
-                    camera.cancelAutoFocus();
-                    camera.startPreview();
+                    // https://github.com/google/cameraview/pull/158
+                    // Check if camera still previewing
+                    if (mShowingPreview) {
+                        camera.cancelAutoFocus();
+                        camera.startPreview();
+                    }
                 }
             });
         }
