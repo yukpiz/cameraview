@@ -22,6 +22,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -51,3 +52,5 @@ dependencies {
         exclude module: 'support-annotations'
     }
 }
+
+apply from: "../mavenupload.gradle"
